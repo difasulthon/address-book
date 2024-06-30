@@ -65,20 +65,9 @@
   padding-bottom: 60px;
   border-bottom: 2px solid #e5e5e5;
   margin-bottom: 30px;
-}
-
-.input-search {
-  border: 1px solid #E5E5E5;
-  padding: 16px;
-  border-radius: 10px;
-  width: 80%;
-  margin-right: 20px;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.input-search:focus {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .search-input-container {
@@ -88,6 +77,21 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 50px;
+  width: 80%;
+}
+
+.input-search {
+  border: 1px solid #E5E5E5;
+  padding: 16px;
+  border-radius: 10px;
+  width: 90%;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input-search:focus {
+  border: 1px solid black;
 }
 
 .button-search {
@@ -95,7 +99,7 @@
   background-color: #1a759f;
   padding: 8px;
   border-radius: 4px;
-  margin-right: 16px;
+  /* margin-right: 16px; */
 }
 
 .search-icon {
@@ -109,7 +113,7 @@
   background-color: #76c893;
   padding: 8px;
   border-radius: 4px;
-  margin-right: 16px;
+  margin-top: 50px;
 }
 
 .add-icon {
