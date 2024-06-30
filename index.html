@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Address Book</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <section class="categories-container">
+      <h3 class="title">Address Book</h3>
+      <ul class="categoriy-item-container">
+        <li class="category-item active">
+          <p class="category-text">All</p>
+          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
+        </li>
+        <li class="category-item">
+          <p class="category-text">Friend</p>
+          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
+        </li>
+        <li class="category-item">
+          <p class="category-text">Family</p>
+          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
+        </li>
+      </ul>
+    </section>
+
+    <section class="list-contact-container">
+      <section class="form-search-section">
+        <form id="search-contacts" method="get" class="search-input-container">
+          <input
+            id="search-input"
+            type="text"
+            name="q"
+            placeholder="Input Name"
+            class="input-search"
+          />
+          <button type="submit" class="button-search">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+          </button>
+          <button type="submit" class="button-add">
+            <ion-icon name="person-add-outline" class="add-icon"></ion-icon>
+          </button>
+        </form>
+      </section>
+
+      <section class="contact-section-container">
+        <section class="contact-container">
+          <ul class="contact-item-container">
+            <li class="contact-item active">
+              <div class="contact-left-content">
+                <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+                <div class="name-container">
+                  <p class="contact-full-name">Full Name</p>
+                  <p class="contact-category">Email</p>
+                </div>
+              </div>
+              <p class="contact-number">phone number</p>
+            </li>
+            <li class="contact-item">
+              <div class="contact-left-content">
+                <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+                <div class="name-container">
+                  <p class="contact-full-name">Full Name</p>
+                  <p class="contact-category">Email</p>
+                </div>
+              </div>
+              <p class="contact-number">phone number</p>
+            </li>
+            <li class="contact-item">
+              <div class="contact-left-content">
+                <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+                <div class="name-container">
+                  <p class="contact-full-name">Full Name</p>
+                  <p class="contact-category">Email</p>
+                </div>
+              </div>
+              <p class="contact-number">phone number</p>
+            </li>
+            <li class="contact-item">
+              <div class="contact-left-content">
+                <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+                <div class="name-container">
+                  <p class="contact-full-name">Full Name</p>
+                  <p class="contact-category">Email</p>
+                </div>
+              </div>
+              <p class="contact-number">phone number</p>
+            </li>
+            <li class="contact-item">
+              <div class="contact-left-content">
+                <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+                <div class="name-container">
+                  <p class="contact-full-name">Full Name</p>
+                  <p class="contact-category">Email</p>
+                </div>
+              </div>
+              <p class="contact-number">phone number</p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="contact-detail-container">
+          <div class="contact-detail-person-icon-container">
+            <ion-icon name="person-circle-outline" class="contact-detail-person-icon"></ion-icon>
+          </div>
+          <div>
+            <div class="contact-detail-name-container">
+              <p class="contact-full-name">Full Name</p>
+              <p class="contact-category">Category</p>
+            </div>
+            <div class="contact-detail-field">
+              <div class="contact-detail-field-item-container">
+                <div class="contact-detail-field-container">
+                  <p class="contact-detail-field-title">Phone Number</p>
+                  <p class="contact-detail-field-subtitle">081234567890</p>
+                </div>
+                <ion-icon name="call" class="contact-detail-field-icon"></ion-icon>
+              </div>
+              <div class="contact-detail-field-item-container">
+                <div class="contact-detail-field-container">
+                  <p class="contact-detail-field-title">Email</p>
+                  <p class="contact-detail-field-subtitle">mail@gmail.com</p>
+                </div>
+                <ion-icon name="mail" class="contact-detail-field-icon"></ion-icon>
+              </div>
+              <div class="contact-detail-field-item-container">
+                <div class="contact-detail-field-container">
+                  <p class="contact-detail-field-title">Address</p>
+                  <p class="contact-detail-field-subtitle">Jl. Soekarno Hatta</p>
+                </div>
+                <ion-icon name="home" class="contact-detail-field-icon"></ion-icon>
+              </div>
+              <div class="contact-detail-field-item-container">
+                <div class="contact-detail-field-container">
+                  <p class="contact-detail-field-title">Notes</p>
+                  <p class="contact-detail-field-subtitle">Bearmentor student</p>
+                </div>
+                <ion-icon name="document" class="contact-detail-field-icon"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+  </div>
+</body>
+</html>

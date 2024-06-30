@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-left: 16px;
+  margin-bottom: 120px;
+}
+
+.categories-container {
+  max-width: 20%;
+  height: 100vh;
+  border-right: 2px solid #E5E5E5;
+}
+
+.chevron-right {
+  width: 20px;
+  height: 20px;
+  color: black;
+}
+
+.categoriy-item-container {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 250px;
+  justify-content: space-between;
+  background-color: white;
+  padding: 12px 8px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.category-text {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.list-contact-container {
+  width: 80%;
+  height: 100vh;
+}
+
+.form-search-section {
+  padding-bottom: 60px;
+  border-bottom: 2px solid #e5e5e5;
+  margin-bottom: 30px;
+}
+
+.input-search {
+  border: 1px solid #E5E5E5;
+  padding: 16px;
+  border-radius: 10px;
+  width: 80%;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input-search:focus {
+  border: 1px solid black;
+}
+
+.search-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 50px;
+}
+
+.button-search {
+  border: none;
+  background-color: #1a759f;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.search-icon {
+  height: 26px;
+  width: 26px;
+  color: white;
+}
+
+.button-add {
+  border: none;
+  background-color: #76c893;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.add-icon {
+  height: 26px;
+  width: 26px;
+  color: white;
+}
+
+.contact-section-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  /* border-right: 2px solid #e5e5e5; */
+  width: 65%;
+}
+
+.contact-item-container {
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-top: 8px;
+  padding-left: 12px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  border: 1px solid #e5e5e5;
+}
+
+.contact-left-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.person-icon {
+  height: 75px;
+  width: 75px;
+}
+
+.name-container {
+  align-items: center;
+  margin-left: 12px;
+}
+
+.contact-full-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.contact-category {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.contact-number {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.contact-detail-container {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contact-detail-person-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-detail-person-icon {
+  height: 90px;
+  width: 90px;
+}
+
+.contact-detail-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.contact-detail-field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+.contact-detail-field-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  align-items: center;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.contact-detail-field-container {
+  display: flex;
+  flex-direction: column; 
+}
+
+.contact-detail-field-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.contact-detail-field-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.contact-detail-field-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.active {
+  border: 1px solid #00b4d8;
+}
