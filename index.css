@@ -7,6 +7,11 @@
   text-decoration: none;
 }
 
+button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -49,6 +54,11 @@
   margin-bottom: 18px;
   border-radius: 8px;
   border: 1px solid #e5e5e5;
+}
+
+.category-item:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .category-text {
@@ -154,6 +164,11 @@
   border: 1px solid #e5e5e5;
 }
 
+.contact-item:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .contact-left-content {
   display: flex;
   flex-direction: row;
@@ -253,4 +268,30 @@
 
 .active {
   border: 1px solid #00b4d8;
+}
+
+.button-action-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  padding-left: 30px;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.button-action {
+  border: transparent;
+  padding: 8px;
+  width: 80px;
+  font-size: 14px;
+  border-radius: 4px;
+  color: white;
+}
+
+.delete {
+  background-color: #ff758f;
+}
+
+.edit {
+  background-color: #76c893;
 }
