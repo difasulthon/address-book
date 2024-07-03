@@ -60,7 +60,13 @@ const onEditContact = (editedContact) => {
 };
 
 const onDeleteContact = (deletedContact) => {
-  const newContacts = 
+  console.log('deletedContact', deletedContact)
+  const newContacts = contacts.filter(contact => contact.id !== deletedContact.id);
+  console.log('newContacts', newContacts)
+
+  contacts = newContacts;
+
+  return contacts;
 }
 
 const addContact1 = {
@@ -92,4 +98,10 @@ onEditContact({
   email: 'sulthon@email.com'
 })
 console.log('onShowContacts after edit', onShowContacts());
+
+onDeleteContact({
+  ...contacts.find(item => item.name === 'sulthon')
+});
+
+console.log('onShowContacts after delete', onShowContacts());
 
