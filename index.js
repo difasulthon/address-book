@@ -69,6 +69,35 @@ const onDeleteContact = (deletedContact) => {
   return contacts;
 }
 
+const showInputFormHandler = () => {
+  const element = document.getElementById('inputModalContainer');
+
+  element.style.display = 'flex';
+};
+
+const hideInputFormHandler = () => {
+  const element = document.getElementById('inputModalContainer');
+
+  element.style.display = 'none';
+};
+
+const showEditFormHandler = () => {
+  const element = document.getElementById('editModalContainer');
+
+  element.style.display = 'flex';
+};
+
+const hideEditFormHandler = () => {
+  const element = document.getElementById('editModalContainer');
+
+  element.style.display = 'none';
+};
+
+document.getElementById('addButton').addEventListener('click', showInputFormHandler);
+document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
+document.getElementById('editButton').addEventListener('click', showEditFormHandler);
+document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
+
 const addContact1 = {
   name: 'difa',
   phoneNumber: '08123456789',

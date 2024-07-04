@@ -37,14 +37,14 @@
             id="search-input"
             type="text"
             name="q"
-            placeholder="Input Name"
+            placeholder="Search by name"
             class="input-search"
           />
           <button type="submit" class="button-search">
             <ion-icon name="search-outline" class="search-icon"></ion-icon>
           </button>
         </form>
-        <button type="submit" class="button-add">
+        <button type="submit" id="addButton" class="button-add">
           <ion-icon name="person-add-outline" class="add-icon"></ion-icon>
         </button>
       </section>
@@ -145,7 +145,7 @@
               </div>
             </div>
             <div class="button-action-container">
-              <button class="button-action edit">Edit</button>
+              <button class="button-action edit" id="editButton">Edit</button>
               <button class="button-action delete">Delete</button>
             </div>
           </div>
@@ -153,6 +153,94 @@
       </section>
     </section>
 
+  </div>
+
+  <div class="modal-container" id="inputModalContainer">
+    <form id="search-contacts" method="get" class="input-contact-container">
+      <div class="input-contact-close-container" id="closeInputForm">
+        <ion-icon name="close" class="input-contact-close-icon"></ion-icon>
+      </div>
+      <h2 class="input-contact-title">Add Contact</h2>
+      <label for="" class="input-contact-label">Name</label>
+      <input
+        id="input-contact"
+        type="text"
+        name="fullName"
+        placeholder="ex: Difa Sulthon"
+        class="input-contact-field"
+      />
+      <label for="" class="input-contact-label">Phone Number</label>
+      <input
+        id="input-contact"
+        type="text"
+        name="phoneNumber"
+        placeholder="ex: 081234567890"
+        class="input-contact-field"
+      />
+      <label for="" class="input-contact-label">Address</label>
+      <textarea
+        id="input-contact"
+        type="text"
+        name="address"
+        placeholder="ex: Bekasi, Jawa Barat"
+        class="input-contact-field input-area"
+      ></textarea>
+      <label for="" class="input-contact-label">Notes</label>
+      <textarea
+        id="input-contact"
+        type="text"
+        name="noyrd"
+        placeholder="ex: Something more detail"
+        class="input-contact-field input-area"
+      ></textarea>
+      <button type="submit" class="input-contact-button">
+        Add
+      </button>
+    </form>
+  </div>
+
+  <div class="edit-modal-container" id="editModalContainer">
+    <form id="search-contacts" method="get" class="input-contact-container">
+      <div class="input-contact-close-container" id="closeEditForm">
+        <ion-icon name="close" class="input-contact-close-icon"></ion-icon>
+      </div>
+      <h2 class="input-contact-title">Edit Contact</h2>
+      <label for="" class="input-contact-label">Name</label>
+      <input
+        id="input-contact"
+        type="text"
+        name="fullName"
+        placeholder="ex: Difa Sulthon"
+        class="input-contact-field"
+      />
+      <label for="" class="input-contact-label">Phone Number</label>
+      <input
+        id="input-contact"
+        type="text"
+        name="phoneNumber"
+        placeholder="ex: 081234567890"
+        class="input-contact-field"
+      />
+      <label for="" class="input-contact-label">Address</label>
+      <textarea
+        id="input-contact"
+        type="text"
+        name="address"
+        placeholder="ex: Bekasi, Jawa Barat"
+        class="input-contact-field input-area"
+      ></textarea>
+      <label for="" class="input-contact-label">Notes</label>
+      <textarea
+        id="input-contact"
+        type="text"
+        name="noyrd"
+        placeholder="ex: Something more detail"
+        class="input-contact-field input-area"
+      ></textarea>
+      <button type="submit" class="input-contact-button">
+        Save
+      </button>
+    </form>
   </div>
 </body>
 <script src="index.js"></script>
