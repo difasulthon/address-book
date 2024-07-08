@@ -7,21 +7,21 @@ const categories = [
     id: '2',
     label: 'Family',
   }
-]
-let contacts = [];
+];
 
-const addContactHandler = (contact) => {
-  // const contacts = window.localStorage.getItem('contacts');
-  const contactAdded = {
-    ...contact,
-    id: crypto.randomUUID()
-  };
-  const newContacts = contacts.push(contactAdded);
+const formAddContact = document.getElementById("form-add-contact");
+const category = document.getElementById('category');
+const categoryEdit = document.getElementById('categoryEdit');
+const contactList = document.getElementById('contact-list');
 
-  // window.localStorage.setItem('contacts', newContacts);
+const getContacts = () => {
+  const contacts = localStorage.getItem('contacts');
+
+  return contacts ? JSON.parse(contacts) : [];
 };
 
 const onShowContacts = () => {
+  const contacts = getContacts();
   const contactsShow =  contacts.map(contact => {
     const categoryId = contact.category;
     const findCategory = categories.find(category => category.id === contact.category);
@@ -30,9 +30,45 @@ const onShowContacts = () => {
       ...contact,
       category: findCategory.label
     }
-  })
+  });
 
   return contactsShow;
+};
+
+const renderContacts = () => {
+  const contacts = onShowContacts();
+  contactList.innerHTML = '';
+
+  contacts.forEach((item, index) => {
+    const contactItem = document.createElement('li');
+    contactItem.innerHTML = `
+     <li class="contact-item">
+        <div class="contact-left-content">
+          <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+          <div class="name-container">
+            <p class="contact-full-name">${item.fullName}</p>
+            <p class="contact-category">${item.email}</p>
+          </div>
+        </div>
+        <p class="contact-number">${item.phoneNumber}</p>
+      </li>
+    `;
+
+    contactList.appendChild(contactItem);
+  })
+};
+
+const addContactHandler = (contact) => {
+  const contacts = getContacts();
+  const contactAdded = {
+    ...contact,
+    id: crypto.randomUUID()
+  };
+  contacts.push(contactAdded);
+
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+
+  renderContacts()
 };
 
 const onSearchContact = (name) => {
@@ -60,9 +96,7 @@ const onEditContact = (editedContact) => {
 };
 
 const onDeleteContact = (deletedContact) => {
-  console.log('deletedContact', deletedContact)
   const newContacts = contacts.filter(contact => contact.id !== deletedContact.id);
-  console.log('newContacts', newContacts)
 
   contacts = newContacts;
 
@@ -95,42 +129,52 @@ const hideEditFormHandler = () => {
 
 document.getElementById('addButton').addEventListener('click', showInputFormHandler);
 document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
+
 document.getElementById('editButton').addEventListener('click', showEditFormHandler);
 document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
 
-const addContact1 = {
-  name: 'difa',
-  phoneNumber: '08123456789',
-  email: 'difa@email.com',
-  address: 'Bekasi',
-  notes: 'teman',
-  category: '1'
-}
-const addContact2 = {
-  name: 'sulthon',
-  phoneNumber: '08123456789',
-  email: 'difa@email.com',
-  address: 'Bekasi',
-  notes: 'teman',
-  category: '2'
-}
+formAddContact.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-addContactHandler(addContact1)
-addContactHandler(addContact2)
+  const contact = {
+   fullName: formAddContact.elements['fullName'].value,
+   phoneNumber: formAddContact.elements['phoneNumber'].value,
+   email: formAddContact.elements['email'].value,
+   category: formAddContact.elements['category'].value,
+   address: formAddContact.elements['address'].value,
+   notes: formAddContact.elements['notes'].value
+  };
 
-console.log('onShowContacts', onShowContacts())
-
-console.log('onSearchContact', onSearchContact('if'))
-
-onEditContact({
-  ...contacts.find(item => item.name === 'sulthon'),
-  email: 'sulthon@email.com'
-})
-console.log('onShowContacts after edit', onShowContacts());
-
-onDeleteContact({
-  ...contacts.find(item => item.name === 'sulthon')
+  addContactHandler(contact);
+  hideInputFormHandler();
 });
 
-console.log('onShowContacts after delete', onShowContacts());
+const renderCategories = () => {
+  category.innerHTML = '';
+  categories.forEach((item, index) => {
+    const option = document.createElement("option");
 
+    option.value = item.id;
+    option.textContent = item.label;
+
+    category.appendChild(option);
+  });
+};
+
+const renderCategoriesEdit = () => {
+  categoryEdit.innerHTML = '';
+  categories.forEach((item, index) => {
+    const option = document.createElement("option");
+
+    option.value = item.id;
+    option.textContent = item.label;
+
+    categoryEdit.appendChild(option);
+  });
+};
+ 
+document.addEventListener("DOMContentLoaded", () => {
+  renderCategories();
+  renderCategoriesEdit();
+  renderContacts();
+});
