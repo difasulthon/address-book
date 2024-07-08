@@ -161,41 +161,62 @@
         <ion-icon name="close" class="input-contact-close-icon"></ion-icon>
       </div>
       <h2 class="input-contact-title">Add Contact</h2>
-      <label for="" class="input-contact-label">Name</label>
-      <input
-        id="input-contact"
-        type="text"
-        name="fullName"
-        placeholder="ex: Difa Sulthon"
-        class="input-contact-field"
-      />
-      <label for="" class="input-contact-label">Phone Number</label>
-      <input
-        id="input-contact"
-        type="text"
-        name="phoneNumber"
-        placeholder="ex: 081234567890"
-        class="input-contact-field"
-      />
-      <label for="" class="input-contact-label">Address</label>
-      <textarea
-        id="input-contact"
-        type="text"
-        name="address"
-        placeholder="ex: Bekasi, Jawa Barat"
-        class="input-contact-field input-area"
-      ></textarea>
-      <label for="" class="input-contact-label">Notes</label>
-      <textarea
-        id="input-contact"
-        type="text"
-        name="noyrd"
-        placeholder="ex: Something more detail"
-        class="input-contact-field input-area"
-      ></textarea>
-      <button type="submit" class="input-contact-button">
-        Add
-      </button>
+      <div class="input-contact-name-phone">
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Name</label>
+          <input
+            id="input-contact"
+            type="text"
+            name="fullName"
+            placeholder="ex: Difa Sulthon"
+            class="input-contact-field"
+          />
+        </div>
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Phone Number</label>
+          <input
+            id="input-contact"
+            type="text"
+            name="phoneNumber"
+            placeholder="ex: 081234567890"
+            class="input-contact-field"
+          />
+        </div>
+      </div>
+      <div class="input-contact-address-notes">
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Address</label>
+          <textarea
+            id="input-contact"
+            type="text"
+            name="address"
+            placeholder="ex: Bekasi, Jawa Barat"
+            class="input-contact-field input-area"
+          ></textarea>
+        </div>
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Notes</label>
+          <textarea
+            id="input-contact"
+            type="text"
+            name="noyrd"
+            placeholder="ex: Something more detail"
+            class="input-contact-field input-area"
+          ></textarea>
+        </div>
+      </div>
+      <div class="input-contact-category-container">
+        <label for="" class="input-contact-label">Category</label>
+        <select name="categories" id="categories" class="input-contact-field input-select">
+          <option value="friend">Friend</option>
+          <option value="family">Family</option>
+        </select>
+      </div>
+      <div class="input-contact-button-container">
+        <button type="submit" class="input-contact-button">
+          Add
+        </button>
+      </div>
     </form>
   </div>
 
@@ -205,41 +226,62 @@
         <ion-icon name="close" class="input-contact-close-icon"></ion-icon>
       </div>
       <h2 class="input-contact-title">Edit Contact</h2>
-      <label for="" class="input-contact-label">Name</label>
-      <input
-        id="input-contact"
-        type="text"
-        name="fullName"
-        placeholder="ex: Difa Sulthon"
-        class="input-contact-field"
-      />
-      <label for="" class="input-contact-label">Phone Number</label>
-      <input
-        id="input-contact"
-        type="text"
-        name="phoneNumber"
-        placeholder="ex: 081234567890"
-        class="input-contact-field"
-      />
-      <label for="" class="input-contact-label">Address</label>
-      <textarea
-        id="input-contact"
-        type="text"
-        name="address"
-        placeholder="ex: Bekasi, Jawa Barat"
-        class="input-contact-field input-area"
-      ></textarea>
-      <label for="" class="input-contact-label">Notes</label>
-      <textarea
-        id="input-contact"
-        type="text"
-        name="noyrd"
-        placeholder="ex: Something more detail"
-        class="input-contact-field input-area"
-      ></textarea>
-      <button type="submit" class="input-contact-button">
-        Save
-      </button>
+      <div class="input-contact-name-phone">
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Name</label>
+          <input
+            id="input-contact"
+            type="text"
+            name="fullName"
+            placeholder="ex: Difa Sulthon"
+            class="input-contact-field"
+          />
+        </div>
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Phone Number</label>
+          <input
+            id="input-contact"
+            type="text"
+            name="phoneNumber"
+            placeholder="ex: 081234567890"
+            class="input-contact-field"
+          />
+        </div>
+      </div>
+      <div class="input-contact-address-notes">
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Address</label>
+          <textarea
+            id="input-contact"
+            type="text"
+            name="address"
+            placeholder="ex: Bekasi, Jawa Barat"
+            class="input-contact-field input-area"
+          ></textarea>
+        </div>
+        <div class="input-contact-field-container">
+          <label for="" class="input-contact-label">Notes</label>
+          <textarea
+            id="input-contact"
+            type="text"
+            name="noyrd"
+            placeholder="ex: Something more detail"
+            class="input-contact-field input-area"
+          ></textarea>
+        </div>
+      </div>
+      <div class="input-contact-category-container">
+        <label for="" class="input-contact-label">Category</label>
+        <select name="categories" id="categories" class="input-contact-field input-select">
+          <option value="friend">Friend</option>
+          <option value="family">Family</option>
+        </select>
+      </div>
+      <div class="input-contact-button-container">
+        <button type="submit" class="input-contact-button">
+          Save
+        </button>
+      </div>
     </form>
   </div>
 </body>

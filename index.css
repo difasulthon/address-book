@@ -13,7 +13,8 @@ button:hover {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border: 1px solid #00b4d8;
   outline: none;
 }
@@ -337,6 +338,24 @@ textarea:focus {
   margin-bottom: 8px;
 }
 
+.input-contact-name-phone {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.input-contact-address-notes {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.input-contact-field-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
 .input-contact-field {
   border: 1px solid #E5E5E5;
   padding: 16px;
@@ -351,6 +370,12 @@ textarea:focus {
   height: 80px;
 }
 
+.input-contact-button-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 14px;
+}
+
 .input-contact-button {
   border: none;
   background-color: #1a759f;
@@ -360,7 +385,9 @@ textarea:focus {
   border-radius: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
-  margin-top: 14px;
+  padding-right: 30px;
+  padding-left: 30px;
+  max-width:fit-content;
 }
 
 .input-contact-close-container {
@@ -375,4 +402,19 @@ textarea:focus {
 .input-contact-close-icon {
   width: 24px;
   height: 24px;
+}
+
+.input-contact-category-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.input-select {
+  width: 430px;
+}
+
+.select-option {
+  border: 1px solid #E5E5E5;
+  background-color: white;
 }
