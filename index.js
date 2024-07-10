@@ -13,6 +13,7 @@ const formAddContact = document.getElementById("form-add-contact");
 const category = document.getElementById('category');
 const categoryEdit = document.getElementById('categoryEdit');
 const contactList = document.getElementById('contact-list');
+const contactDetail = document.getElementById('contact-detail');
 
 const getContacts = () => {
   const contacts = localStorage.getItem('contacts');
@@ -35,27 +36,55 @@ const onShowContacts = () => {
   return contactsShow;
 };
 
-const renderContacts = () => {
-  const contacts = onShowContacts();
-  contactList.innerHTML = '';
+const renderContactDetail = (item) => {
+  const {
+    fullName, email, category, phoneNumber, address, notes
+  } = item;
 
-  contacts.forEach((item, index) => {
-    const contactItem = document.createElement('li');
-    contactItem.innerHTML = `
-     <li class="contact-item">
-        <div class="contact-left-content">
-          <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
-          <div class="name-container">
-            <p class="contact-full-name">${item.fullName}</p>
-            <p class="contact-category">${item.email}</p>
+  contactDetail.innerHTML = `
+    <div class="contact-detail-person-icon-container">
+      <ion-icon name="person-circle-outline" class="contact-detail-person-icon"></ion-icon>
+    </div>
+    <div>
+      <div class="contact-detail-name-container">
+        <p class="contact-full-name">${fullName}</p>
+        <p class="contact-category">${category}</p>
+      </div>
+      <div class="contact-detail-field">
+        <div class="contact-detail-field-item-container">
+          <div class="contact-detail-field-container">
+            <p class="contact-detail-field-title">Phone Number</p>
+            <p class="contact-detail-field-subtitle">${phoneNumber}</p>
           </div>
+          <ion-icon name="call" class="contact-detail-field-icon"></ion-icon>
         </div>
-        <p class="contact-number">${item.phoneNumber}</p>
-      </li>
-    `;
-
-    contactList.appendChild(contactItem);
-  })
+        <div class="contact-detail-field-item-container">
+          <div class="contact-detail-field-container">
+            <p class="contact-detail-field-title">Email</p>
+            <p class="contact-detail-field-subtitle">${email}</p>
+          </div>
+          <ion-icon name="mail" class="contact-detail-field-icon"></ion-icon>
+        </div>
+        <div class="contact-detail-field-item-container">
+          <div class="contact-detail-field-container">
+            <p class="contact-detail-field-title">Address</p>
+            <p class="contact-detail-field-subtitle">${address}</p>
+          </div>
+          <ion-icon name="home" class="contact-detail-field-icon"></ion-icon>
+        </div>
+        <div class="contact-detail-field-item-container">
+          <div class="contact-detail-field-container">
+            <p class="contact-detail-field-title">Notes</p>
+            <p class="contact-detail-field-subtitle">${notes}</p>
+          </div>
+          <ion-icon name="document" class="contact-detail-field-icon"></ion-icon>
+        </div>
+        <div class="button-action-container">
+          <button class="button-action edit" id="editButton">Edit</button>
+          <button class="button-action delete">Delete</button>
+        </div>
+      </div>
+  `;
 };
 
 const addContactHandler = (contact) => {
@@ -116,6 +145,7 @@ const hideInputFormHandler = () => {
 };
 
 const showEditFormHandler = () => {
+  console.log('showEditFormHandler')
   const element = document.getElementById('editModalContainer');
 
   element.style.display = 'flex';
@@ -130,12 +160,9 @@ const hideEditFormHandler = () => {
 document.getElementById('addButton').addEventListener('click', showInputFormHandler);
 document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
 
-document.getElementById('editButton').addEventListener('click', showEditFormHandler);
 document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
 
 formAddContact.addEventListener('submit', (event) => {
-  event.preventDefault();
-
   const contact = {
    fullName: formAddContact.elements['fullName'].value,
    phoneNumber: formAddContact.elements['phoneNumber'].value,
@@ -170,6 +197,47 @@ const renderCategoriesEdit = () => {
     option.textContent = item.label;
 
     categoryEdit.appendChild(option);
+  });
+};
+
+const onClickEditButton = () => {
+  const editButton = document.getElementById('editButton');
+  
+  editButton.addEventListener('click', showEditFormHandler);
+};
+
+const setActiveHandler = (contactItem) => {
+  const allContactItems = document.querySelectorAll('.contact-item');
+  allContactItems.forEach(ci => ci.classList.remove('active'));
+  
+  contactItem.classList.add('active');
+};
+
+const renderContacts = () => {
+  const contacts = onShowContacts();
+  contactList.innerHTML = '';
+
+  contacts.forEach((item, index) => {
+    const contactItem = document.createElement('li');
+    contactItem.classList.add('contact-item');
+    contactItem.innerHTML = `
+      <div class="contact-left-content">
+        <ion-icon name="person-circle-outline" class="person-icon"></ion-icon>
+        <div class="name-container">
+          <p class="contact-full-name">${item.fullName}</p>
+          <p class="contact-category">${item.email}</p>
+        </div>
+      </div>
+      <p class="contact-number">${item.phoneNumber}</p>
+    `;
+
+    contactList.appendChild(contactItem);
+
+    contactItem.addEventListener('click', () => {
+      setActiveHandler(contactItem);
+      renderContactDetail(item);
+      onClickEditButton();
+    });
   });
 };
  
