@@ -9,6 +9,7 @@ const categories = [
   }
 ];
 let contactEdit;
+let contactDelete;
 
 const formAddContact = document.getElementById('form-add-contact');
 const category = document.getElementById('category');
@@ -93,12 +94,14 @@ const onEditContact = (editedContact) => {
   renderContacts();
 };
 
-const onDeleteContact = (deletedContact) => {
-  const newContacts = contacts.filter(contact => contact.id !== deletedContact.id);
+const onDeleteContact = () => {
+  const contacts = getContacts()
+  const newContacts = contacts.filter(contact => contact.id !== contactDelete.id);
 
-  contacts = newContacts;
-
-  return contacts;
+  setContacts(newContacts);
+  hideDeleteConfirmationHandler();
+  renderContacts();
+  window.location.reload();
 };
 
 const editButtonClickHandler = (item) => {
@@ -116,6 +119,17 @@ const editButtonClickHandler = (item) => {
   formEditContact.elements['editAddress'].value = address;
   formEditContact.elements['editNotes'].value = notes;
   contactEdit = { ...item };
+};
+
+const deleteButtonClickHandler = (item) => {
+  const { fullName } = item
+  const deleteButton = document.getElementById('deleteButton');
+  const contactNameText = document.getElementById('delete-confirmation-contact-name');
+  
+  contactNameText.innerText = fullName;
+  contactDelete = { ...item };
+
+  deleteButton.addEventListener('click', showDeleteConfirmationHandler);
 };
 
 const setActiveContactHandler = (contactItem) => {
@@ -156,10 +170,25 @@ const hideEditFormHandler = () => {
   element.style.display = 'none';
 };
 
+const showDeleteConfirmationHandler = () => {
+  const element = document.getElementById('delete-confirmation-modal');
+
+  element.style.display = 'flex';
+};
+
+const hideDeleteConfirmationHandler = () => {
+  const element = document.getElementById('delete-confirmation-modal');
+
+  element.style.display = 'none';
+};
+
 document.getElementById('addButton').addEventListener('click', showInputFormHandler);
 document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
 
 document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
+
+document.getElementById('delete-confirmation-no').addEventListener('click', hideDeleteConfirmationHandler);
+document.getElementById('delete-confirmation-yes').addEventListener('click', onDeleteContact);
 
 formAddContact.addEventListener('submit', (event) => {
   const contact = {
@@ -242,7 +271,7 @@ const renderContactDetail = (item) => {
         </div>
         <div class="button-action-container">
           <button class="button-action edit" id="editButton">Edit</button>
-          <button class="button-action delete">Delete</button>
+          <button class="button-action delete" id="deleteButton">Delete</button>
         </div>
       </div>
   `;
@@ -296,9 +325,12 @@ const renderContacts = (key, value) => {
       setActiveContactHandler(contactItem);
       renderContactDetail(item);
       editButtonClickHandler(item);
+      deleteButtonClickHandler(item);
     });
   });
 };
+
+const isAllCategory = (category) => category.id === '0';
 
 const renderFilterCategories = () => {
   const allCategory = {
@@ -321,7 +353,7 @@ const renderFilterCategories = () => {
     categoryItem.addEventListener('click', () => {
       setActiveCategoryHandler(categoryItem);
       
-      if (item.id === '0') {
+      if (isAllCategory(item)) {
         renderContacts();
       } else {
         renderContacts('category', item.label);

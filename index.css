@@ -306,7 +306,8 @@ ul {
 }
 
 .modal-container,
-.edit-modal-container {
+.edit-modal-container,
+.modal-delete-confirmation {
   background-color: rgba(0, 0, 0, 0.3) ;
   opacity: 1;
   position: absolute;
@@ -420,4 +421,24 @@ ul {
 .select-option {
   border: 1px solid #E5E5E5;
   background-color: white;
+}
+
+.delete-confirmation-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.delete-question {
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.delete-confirmation-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
