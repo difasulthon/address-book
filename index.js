@@ -28,7 +28,7 @@ const getContacts = () => {
 
 const setContacts = (contacts) => {
   localStorage.setItem('contacts', JSON.stringify(contacts));
-}
+};
 
 const onShowContacts = (key, value) => {
   const contacts = getContacts();
@@ -330,14 +330,14 @@ const renderContacts = (key, value) => {
   });
 };
 
-const isAllCategory = (category) => category.id === '0';
+const getIsAllCategory = (category) => category.id === '0';
 
 const renderFilterCategories = () => {
   const allCategory = {
     id: '0',
     label: 'All',
   };
-  const newCategories = [ ...categories ]
+  const newCategories = [ ...categories ];
   newCategories.unshift(allCategory);
 
   newCategories.forEach((item) => {
@@ -351,9 +351,10 @@ const renderFilterCategories = () => {
     categoryList.appendChild(categoryItem);
 
     categoryItem.addEventListener('click', () => {
+      const isAllCategory = getIsAllCategory(item);
       setActiveCategoryHandler(categoryItem);
       
-      if (isAllCategory(item)) {
+      if (isAllCategory) {
         renderContacts();
       } else {
         renderContacts('category', item.label);
