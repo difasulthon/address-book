@@ -14,29 +14,17 @@
 
     <section class="categories-container">
       <h3 class="title">Address Book</h3>
-      <ul class="categoriy-item-container">
-        <li class="category-item active">
-          <p class="category-text">All</p>
-          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
-        </li>
-        <li class="category-item">
-          <p class="category-text">Friend</p>
-          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
-        </li>
-        <li class="category-item">
-          <p class="category-text">Family</p>
-          <ion-icon name="chevron-forward-outline" class="chevron-right"></ion-icon>
-        </li>
+      <ul class="category-item-container" id="category-list">
+        <!-- category item handled by js -->
       </ul>
     </section>
 
     <section class="list-contact-container">
       <section class="form-search-section">
-        <form id="search-contacts" method="get" class="search-input-container">
+        <form id="form-search-contacts" method="get" class="search-input-container">
           <input
             id="search-input"
             type="text"
-            name="q"
             placeholder="Search by name"
             class="input-search"
           />
@@ -110,21 +98,21 @@
       <div class="input-contact-address-notes">
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Address</label>
-          <textarea
+          <input
             id="address"
             type="text"
             placeholder="ex: Bekasi, Jawa Barat"
-            class="input-contact-field input-area"
-          ></textarea>
+            class="input-contact-field"
+          ></input>
         </div>
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Notes</label>
-          <textarea
+          <input
             id="notes"
             type="text"
             placeholder="ex: Something more detail"
-            class="input-contact-field input-area"
-          ></textarea>
+            class="input-contact-field"
+          ></input>
         </div>
       </div>
       <div class="input-contact-button-container">
@@ -136,7 +124,7 @@
   </div>
 
   <div class="edit-modal-container" id="editModalContainer">
-    <form id="search-contacts" method="get" class="input-contact-container">
+    <form id="form-edit-contact" method="get" class="input-contact-container">
       <div class="input-contact-close-container" id="closeEditForm">
         <ion-icon name="close" class="input-contact-close-icon"></ion-icon>
       </div>
@@ -145,7 +133,7 @@
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Name</label>
           <input
-            id="input-contact"
+            id="editFullName"
             type="text"
             name="fullName"
             placeholder="ex: Difa Sulthon"
@@ -155,7 +143,7 @@
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Phone Number</label>
           <input
-            id="input-contact"
+            id="editPhoneNumber"
             type="text"
             name="phoneNumber"
             placeholder="ex: 081234567890"
@@ -167,7 +155,7 @@
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Email</label>
           <input
-            id="email"
+            id="editEmail"
             type="email"
             placeholder="ex: example@email.com"
             class="input-contact-field"
@@ -175,7 +163,7 @@
         </div>
         <div class="input-contact-category-container">
           <label for="" class="input-contact-label">Category</label>
-          <select id="categoryEdit" class="input-contact-field input-select">
+          <select id="editCategory" class="input-contact-field input-select">
             <!-- options handled by js -->
           </select>
         </div>
@@ -183,23 +171,23 @@
       <div class="input-contact-address-notes">
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Address</label>
-          <textarea
-            id="input-contact"
+          <input
+            id="editAddress"
             type="text"
             name="address"
             placeholder="ex: Bekasi, Jawa Barat"
-            class="input-contact-field input-area"
-          ></textarea>
+            class="input-contact-field"
+          ></input>
         </div>
         <div class="input-contact-field-container">
           <label for="" class="input-contact-label">Notes</label>
-          <textarea
-            id="input-contact"
+          <input
+            id="editNotes"
             type="text"
-            name="noyrd"
+            name="notes"
             placeholder="ex: Something more detail"
-            class="input-contact-field input-area"
-          ></textarea>
+            class="input-contact-field"
+          ></input>
         </div>
       </div>
       <div class="input-contact-button-container">
