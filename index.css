@@ -32,13 +32,25 @@ ul {
 .title {
   font-size: 26px;
   font-weight: 700;
-  margin-top: 20px;
-  margin-left: 16px;
-  margin-bottom: 120px;
+  margin-left: 8px;
 }
 
 .categories-container {
   max-width: 20%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 16px;
+  margin-bottom: 120px;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
 }
 
 .chevron-right {
