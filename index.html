@@ -28,6 +28,7 @@
             placeholder="Search by name"
             class="input-search"
           />
+          <ion-icon name="close" class="search-close-icon" id="search-input-reset"></ion-icon>
           <button type="submit" class="button-search">
             <ion-icon name="search-outline" class="search-icon"></ion-icon>
           </button>
@@ -49,8 +50,11 @@
         </section>
       </section>
     </section>
-
   </div>
+
+  <section class="footer-container">
+    <p class="footer-text">Copyright &copy; 2024 Muhammad Difa Sulthon Diani. All Rights Reserved.</p>
+  </section>
 
   <div class="modal-container" id="inputModalContainer">
     <form id="form-add-contact" method="get" class="input-contact-container">
@@ -203,7 +207,7 @@
       <p class="delete-question">
         Are you sure want to delete 
         <b id="delete-confirmation-contact-name">Lionel Messi</b> 
-        from your contact?
+        from your contacts?
       </p>
       <div class="delete-confirmation-button-container">
         <button type="submit" class="button-action delete" id="delete-confirmation-no">
@@ -216,5 +220,8 @@
     </div>
   </div>
 </body>
+<script src="storage.js"></script>
+<script src="handler.js"></script>
+<script src="utils.js"></script>
 <script src="index.js"></script>
 </html>

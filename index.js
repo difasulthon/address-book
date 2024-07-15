@@ -18,40 +18,23 @@ const contactList = document.getElementById('contact-list');
 const contactDetail = document.getElementById('contact-detail');
 const formEditContact = document.getElementById('form-edit-contact');
 const categoryList = document.getElementById('category-list');
-const formSearchContacts = document.getElementById('form-search-contacts')
-
-const getContacts = () => {
-  const contacts = localStorage.getItem('contacts');
-
-  return contacts ? JSON.parse(contacts) : [];
-};
-
-const setContacts = (contacts) => {
-  localStorage.setItem('contacts', JSON.stringify(contacts));
-};
+const formSearchContacts = document.getElementById('form-search-contacts');
+const searchInput = document.getElementById('search-input');
 
 const onShowContacts = (key, value) => {
-  const contacts = getContacts();
-  const contactsShow =  contacts.map(contact => {
-    const categoryId = contact.category;
-    const findCategory = categories.find(category => category.id === contact.category);
-
-    return {
-      ...contact,
-      category: findCategory.label
-    }
-  });
+  const contactsShow =  getContactsWitMappingCategory();
 
   if (!key || !value) {
-    return contactsShow;
+    return getSortContactsByName(contactsShow);
   } else {
-    const filteredContact = contactsShow.filter(contact => contact[key].toLowerCase().includes(value.toLowerCase()));
+    const filteredContact = 
+      contactsShow.filter(contact => contact[key].toLowerCase().includes(value.toLowerCase()));
 
-    return filteredContact;
+    return getSortContactsByName(filteredContact);
   };
 };
 
-const addContactHandler = (contact) => {
+const onAddContact = (contact) => {
   const contacts = getContacts();
   const contactAdded = {
     ...contact,
@@ -61,15 +44,6 @@ const addContactHandler = (contact) => {
 
   setContacts(contacts);
   renderContacts();
-};
-
-const onSearchContact = (name) => {
-  const keyWord = name.toLowerCase();
-  // const contacts = window.localStorage.getItem('contacts');
-
-  const contactsFiltered = contacts.filter(contact => contact.name.toLowerCase().includes(keyWord));
-
-  return contactsFiltered;
 };
 
 const onEditContact = (editedContact) => {
@@ -104,24 +78,16 @@ const onDeleteContact = () => {
   window.location.reload();
 };
 
-const editButtonClickHandler = (item) => {
-  const {
-    fullName, phoneNumber, email, category, address, notes
-  } = item;
+const onClickEditButton = (item) => {
   const editButton = document.getElementById('editButton');
   
   editButton.addEventListener('click', showEditFormHandler);
-  
-  formEditContact.elements['editFullName'].value = fullName;
-  formEditContact.elements['editPhoneNumber'].value = phoneNumber;
-  formEditContact.elements['editEmail'].value = email;
-  formEditContact.elements['editCategory'].value = categories.find(item => item.label = category).id;
-  formEditContact.elements['editAddress'].value = address;
-  formEditContact.elements['editNotes'].value = notes;
+
+  setDefaultValueHandler(item);
   contactEdit = { ...item };
 };
 
-const deleteButtonClickHandler = (item) => {
+const onClickDeleteButton = (item) => {
   const { fullName } = item
   const deleteButton = document.getElementById('deleteButton');
   const contactNameText = document.getElementById('delete-confirmation-contact-name');
@@ -132,98 +98,19 @@ const deleteButtonClickHandler = (item) => {
   deleteButton.addEventListener('click', showDeleteConfirmationHandler);
 };
 
-const setActiveContactHandler = (contactItem) => {
+const setContactActive = (contactItem) => {
   const allContactItems = document.querySelectorAll('.contact-item');
   allContactItems.forEach(item => item.classList.remove('active'));
   
   contactItem.classList.add('active');
 };
 
-const setActiveCategoryHandler = (categoryItem) => {
+const setCategoryActive = (categoryItem) => {
   const allCCategoryItems = document.querySelectorAll('.category-item');
   allCCategoryItems.forEach(item => item.classList.remove('active'));
   
   categoryItem.classList.add('active');
 };
-
-const showInputFormHandler = () => {
-  const element = document.getElementById('inputModalContainer');
-
-  element.style.display = 'flex';
-};
-
-const hideInputFormHandler = () => {
-  const element = document.getElementById('inputModalContainer');
-
-  element.style.display = 'none';
-};
-
-const showEditFormHandler = () => {
-  const element = document.getElementById('editModalContainer');
-
-  element.style.display = 'flex';
-};
-
-const hideEditFormHandler = () => {
-  const element = document.getElementById('editModalContainer');
-
-  element.style.display = 'none';
-};
-
-const showDeleteConfirmationHandler = () => {
-  const element = document.getElementById('delete-confirmation-modal');
-
-  element.style.display = 'flex';
-};
-
-const hideDeleteConfirmationHandler = () => {
-  const element = document.getElementById('delete-confirmation-modal');
-
-  element.style.display = 'none';
-};
-
-document.getElementById('addButton').addEventListener('click', showInputFormHandler);
-document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
-
-document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
-
-document.getElementById('delete-confirmation-no').addEventListener('click', hideDeleteConfirmationHandler);
-document.getElementById('delete-confirmation-yes').addEventListener('click', onDeleteContact);
-
-formAddContact.addEventListener('submit', (event) => {
-  const contact = {
-   fullName: formAddContact.elements['fullName'].value,
-   phoneNumber: formAddContact.elements['phoneNumber'].value,
-   email: formAddContact.elements['email'].value,
-   category: formAddContact.elements['category'].value,
-   address: formAddContact.elements['address'].value,
-   notes: formAddContact.elements['notes'].value
-  };
-
-  addContactHandler(contact);
-  hideInputFormHandler();
-});
-
-formEditContact.addEventListener('submit', (event) => {
-  const contact = {
-   fullName: formEditContact.elements['editFullName'].value,
-   phoneNumber: formEditContact.elements['editPhoneNumber'].value,
-   email: formEditContact.elements['editEmail'].value,
-   category: formEditContact.elements['editCategory'].value,
-   address: formEditContact.elements['editAddress'].value,
-   notes: formEditContact.elements['editNotes'].value
-  };
-
-  onEditContact(contact);
-  hideEditFormHandler();
-});
-
-formSearchContacts.addEventListener('submit', (event) => {
-  event.preventDefault()
-  const value = formSearchContacts.elements['search-input'].value;
-
-  renderContacts('fullName', value);
-});
 
 const renderContactDetail = (item) => {
   const {
@@ -322,15 +209,13 @@ const renderContacts = (key, value) => {
     contactList.appendChild(contactItem);
 
     contactItem.addEventListener('click', () => {
-      setActiveContactHandler(contactItem);
+      setContactActive(contactItem);
       renderContactDetail(item);
-      editButtonClickHandler(item);
-      deleteButtonClickHandler(item);
+      onClickEditButton(item);
+      onClickDeleteButton(item);
     });
   });
 };
-
-const getIsAllCategory = (category) => category.id === '0';
 
 const renderFilterCategories = () => {
   const allCategory = {
@@ -352,7 +237,7 @@ const renderFilterCategories = () => {
 
     categoryItem.addEventListener('click', () => {
       const isAllCategory = getIsAllCategory(item);
-      setActiveCategoryHandler(categoryItem);
+      setCategoryActive(categoryItem);
       
       if (isAllCategory) {
         renderContacts();
@@ -362,6 +247,50 @@ const renderFilterCategories = () => {
     });
   });
 };
+
+
+formAddContact.addEventListener('submit', (event) => {
+  const contact = {
+   fullName: formAddContact.elements['fullName'].value,
+   phoneNumber: formAddContact.elements['phoneNumber'].value,
+   email: formAddContact.elements['email'].value,
+   category: formAddContact.elements['category'].value,
+   address: formAddContact.elements['address'].value,
+   notes: formAddContact.elements['notes'].value
+  };
+
+  onAddContact(contact);
+  hideInputFormHandler();
+});
+
+formEditContact.addEventListener('submit', (event) => {
+  const contact = {
+   fullName: formEditContact.elements['editFullName'].value,
+   phoneNumber: formEditContact.elements['editPhoneNumber'].value,
+   email: formEditContact.elements['editEmail'].value,
+   category: formEditContact.elements['editCategory'].value,
+   address: formEditContact.elements['editAddress'].value,
+   notes: formEditContact.elements['editNotes'].value
+  };
+
+  onEditContact(contact);
+  hideEditFormHandler();
+});
+
+formSearchContacts.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const value = formSearchContacts.elements['search-input'].value;
+
+  renderContacts('fullName', value);
+});
+
+searchInput.addEventListener('input', resetIconHandler);
+
+document.getElementById('addButton').addEventListener('click', showInputFormHandler);
+document.getElementById('closeInputForm').addEventListener('click', hideInputFormHandler);
+document.getElementById('closeEditForm').addEventListener('click', hideEditFormHandler);
+document.getElementById('delete-confirmation-no').addEventListener('click', hideDeleteConfirmationHandler);
+document.getElementById('delete-confirmation-yes').addEventListener('click', onDeleteContact);
  
 document.addEventListener("DOMContentLoaded", () => {
   renderCategories();
