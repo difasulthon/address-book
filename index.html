@@ -70,6 +70,9 @@
             type="text"
             placeholder="ex: Difa Sulthon"
             class="input-contact-field"
+            pattern="^[A-Za-z\s]+$"
+            maxlength="32"
+            required
           />
         </div>
         <div class="input-contact-field-container">
@@ -79,6 +82,9 @@
             type="text"
             placeholder="ex: 081234567890"
             class="input-contact-field"
+            pattern="^\d{10,14}$"
+            maxlength="14"
+            required
           />
         </div>
       </div>
@@ -90,6 +96,9 @@
             type="email"
             placeholder="ex: example@email.com"
             class="input-contact-field"
+            pattern="^$|^\S+@\S+\.\S+"
+            maxlength="32"
+            required
           />
         </div>
         <div class="input-contact-category-container">
@@ -107,6 +116,8 @@
             type="text"
             placeholder="ex: Bekasi, Jawa Barat"
             class="input-contact-field"
+            maxlength="32"
+            required
           ></input>
         </div>
         <div class="input-contact-field-container">
@@ -116,6 +127,7 @@
             type="text"
             placeholder="ex: Something more detail"
             class="input-contact-field"
+            maxlength="32"
           ></input>
         </div>
       </div>
@@ -139,9 +151,11 @@
           <input
             id="editFullName"
             type="text"
-            name="fullName"
             placeholder="ex: Difa Sulthon"
             class="input-contact-field"
+            pattern="^[A-Za-z\s]+$"
+            maxlength="32"
+            required
           />
         </div>
         <div class="input-contact-field-container">
@@ -149,9 +163,11 @@
           <input
             id="editPhoneNumber"
             type="text"
-            name="phoneNumber"
             placeholder="ex: 081234567890"
             class="input-contact-field"
+            pattern="^[0-9]{7,14}$"
+            maxlength="14"
+            required
           />
         </div>
       </div>
@@ -163,6 +179,9 @@
             type="email"
             placeholder="ex: example@email.com"
             class="input-contact-field"
+            pattern="^$|^\S+@\S+\.\S+"
+            maxlength="32"
+            required
           />
         </div>
         <div class="input-contact-category-container">
@@ -181,6 +200,8 @@
             name="address"
             placeholder="ex: Bekasi, Jawa Barat"
             class="input-contact-field"
+            maxlength="32"
+            required
           ></input>
         </div>
         <div class="input-contact-field-container">
@@ -191,6 +212,7 @@
             name="notes"
             placeholder="ex: Something more detail"
             class="input-contact-field"
+            maxlength="32"
           ></input>
         </div>
       </div>

@@ -248,7 +248,6 @@ const renderFilterCategories = () => {
   });
 };
 
-
 formAddContact.addEventListener('submit', (event) => {
   const contact = {
    fullName: formAddContact.elements['fullName'].value,

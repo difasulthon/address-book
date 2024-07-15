@@ -385,10 +385,6 @@ ul {
   margin-bottom: 12px;
 }
 
-.input-area {
-  height: 80px;
-}
-
 .input-contact-button-container {
   display: flex;
   flex-direction: row-reverse;
