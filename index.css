@@ -29,6 +29,25 @@ ul {
   background-color: white;
 }
 
+.snackbar-container {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff758f;
+  border-radius: 10px;
+  height: 60px;
+  width: 375px;
+  z-index: 99;
+  top: 20%;
+  left: 40%;
+}
+
+.snackbar-text {
+  color: white;
+  font-size: 16px;
+}
+
 .categories-container {
   max-width: 20%;
 }

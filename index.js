@@ -40,10 +40,30 @@ const onAddContact = (contact) => {
     ...contact,
     id: crypto.randomUUID()
   };
-  contacts.push(contactAdded);
 
-  setContacts(contacts);
-  renderContacts();
+  let isExisting = false;
+  contacts.forEach(item => {
+    if(item.phoneNumber === contact.phoneNumber
+        || item.email === contact.email
+    ) {
+      isExisting = true;
+    }
+  })
+
+  if (isExisting) {
+    const snackBar = document.getElementById('snackbar');
+    const snackBarText = document.getElementById('snackbar-text');
+
+    snackBarText.innerText = "This phone number or email is available";
+    snackBar.style.display = 'flex';
+    setTimeout(() => {
+      snackBar.style.display = 'none';
+    }, 3000)
+  } else {
+    contacts.push(contactAdded);
+    setContacts(contacts);
+    renderContacts();
+  }
 };
 
 const onEditContact = (editedContact) => {
