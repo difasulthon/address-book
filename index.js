@@ -34,7 +34,7 @@ const onShowContacts = (key, value) => {
   };
 };
 
-const onAddContact = (contact) => {
+const onAddContact = (event, contact) => {
   const contacts = getContacts();
   const contactAdded = {
     ...contact,
@@ -51,6 +51,7 @@ const onAddContact = (contact) => {
   })
 
   if (isExisting) {
+    event.preventDefault();
     const snackBar = document.getElementById('snackbar');
     const snackBarText = document.getElementById('snackbar-text');
 
@@ -62,6 +63,7 @@ const onAddContact = (contact) => {
   } else {
     contacts.push(contactAdded);
     setContacts(contacts);
+    hideInputFormHandler();
     renderContacts();
   }
 };
@@ -278,8 +280,7 @@ formAddContact.addEventListener('submit', (event) => {
    notes: formAddContact.elements['notes'].value
   };
 
-  onAddContact(contact);
-  hideInputFormHandler();
+  onAddContact(event, contact);
 });
 
 formEditContact.addEventListener('submit', (event) => {
