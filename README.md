@@ -1,6 +1,6 @@
 # Address Book
 
-This repository for Address Book web app. Address Book is an application that can be used for contact management based on **HTML**, **CSS**, and **Javascript** technologies. The Address Book contains several features that can be used by users. Here are some of the features in this Address Book Web App. You can access [here](https://difasulthon.github.io/address-book/)
+This repository for Address Book web app. Address Book is an application that can be used for contact management based on **HTML**, **CSS**, and **Javascript** technologies. The Address Book contains several features that can be used by users. Here are some of the features in this Address Book Web App. You can access [https://difasulthon.github.io/address-book/](https://difasulthon.github.io/address-book/)
 
 - **Contact List**: Display a list of contacts with their names and essential details.
 - **Contact Details**: Clicking on a contact should show a content displaying detailed information, including phone numbers, email addresses, and any additional notes.
